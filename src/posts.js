@@ -1,31 +1,34 @@
 import React from 'react';
-import { Edit, Create, Filter, SimpleForm, ReferenceInput, SelectInput, TextInput } from 'react-admin';
-import { List, Datagrid, ReferenceField, TextField } from 'react-admin';
+import { Edit, EditButton, Create, SimpleForm, ReferenceInput, SelectInput, TextInput } from 'react-admin';
+import { List, Datagrid, ReferenceField, TextField, SimpleList } from 'react-admin';
+import { useMediaQuery } from '@material-ui/core';
 
 const PostTitle = ({record}) => (
   <span>Post {record ? `${record.title}` : ''}</span>
 );
 
-const PostFilter = props => (
-  <Filter {...props}>
-    <TextInput label="Search" source="q" alwaysOn/>
-    <ReferenceInput label="User" source="userId" reference="users" allowEmpty>
-      <SelectInput optionText="name"/>
-    </ReferenceInput>
-  </Filter>
-);
-
-export const PostList = props => (
-  <List filters={<PostFilter/>} {...props}>
-  <Datagrid rowClick="edit">
-    <TextField source="id" />
-    <ReferenceField source="userId" reference="users">
-      <TextField source="name" />
-    </ReferenceField>
-    <TextField source="title" />
-  </Datagrid>
-</List>
-);
+export const PostList = props => {
+	const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down('sm'));
+	return (
+		<List {...props}>
+			{isSmallScreen ? (
+				<SimpleList
+					primaryText={record => record.title}
+				/>
+			) : (
+				<Datagrid>
+					<TextField source="id" />
+						<ReferenceField source="userId" reference="users">
+							<TextField source="name" />
+						</ReferenceField>
+						<TextField source="title" />
+						<EditButton/>
+				</Datagrid>
+			)
+			}
+		</List>
+	);
+}
 
 export const PostEdit = props => (
   <Edit title={<PostTitle/>} {...props}>
