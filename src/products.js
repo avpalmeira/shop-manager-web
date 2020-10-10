@@ -1,9 +1,11 @@
 import React from 'react';
 import {
   EditButton, 
+  DeleteButton,
   Edit,
   Create,
   SimpleForm,
+  NumberInput,
   TextInput 
 } from 'react-admin';
 import { List, Datagrid, TextField, SimpleList } from 'react-admin';
@@ -27,6 +29,7 @@ export const ProductList = props => {
 					<TextField source="id" />
           <TextField source="name" />
           <EditButton/>
+          <DeleteButton/>
 				</Datagrid>
 			)
 			}
@@ -35,9 +38,10 @@ export const ProductList = props => {
 }
 
 export const ProductEdit = props => (
-  <Edit title={<ProductTitle/>} {...props}>
+<Edit title={<ProductTitle/>} {...props}>
   <SimpleForm>
     <TextInput source="name" />
+    <NumberInput source="quantity" />
   </SimpleForm>
 </Edit>
 );
@@ -46,6 +50,7 @@ export const ProductCreate = props => (
 <Create {...props}>
   <SimpleForm>
     <TextInput source="name" />
+    <NumberInput source="quantity" />
   </SimpleForm>
 </Create>
 );
