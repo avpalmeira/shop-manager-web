@@ -9,15 +9,14 @@ import {
   ProductList, 
   ProductEdit,
   ProductCreate,
+  ProductShow,
 } from './products';
 import Dashboard from './Dashboard';
 import authProvider from './services/authProvider';
 import simpleRestProvider from 'ra-data-simple-rest';
 
-// URL to ShopManager API
-const url = 'http://localhost:3000';
-// URL to Affiliates API
-// const url = 'http://localhost:3000/api/v1';
+const url = 'http://localhost:3000'; // URL to ShopManager API
+// const url = 'http://localhost:3000/api/v1'; // URL to Affiliates API
 
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -45,6 +44,7 @@ const App = () => (
       list={ProductList} 
       edit={ProductEdit}
       create={ProductCreate}
+      show={ProductShow}
       icon={BasketIcon} 
     />
   </Admin>
