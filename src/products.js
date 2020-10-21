@@ -1,17 +1,22 @@
 import React from 'react';
 import {
-  EditButton, 
-  DeleteButton,
-  ShowButton,
-  Edit,
   Create,
-  Show,
-  SimpleShowLayout,
-  SimpleForm,
+  DeleteButton,
+  Edit,
+  EditButton, 
+  ImageField,
+  ImageInput,
   NumberInput,
-  TextInput 
+  Show,
+  ShowButton,
+  SimpleForm,
+  SimpleShowLayout,
+  TextInput,
+  List,
+  Datagrid,
+  TextField,
+  SimpleList,
 } from 'react-admin';
-import { List, Datagrid, TextField, SimpleList } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 
 
@@ -48,6 +53,9 @@ export const ProductEdit = props => (
   <SimpleForm>
     <TextInput source="name" />
     <NumberInput source="quantity" />
+    <ImageInput source="photo" accept="image/*">
+      <ImageField source="src" />
+    </ImageInput>
   </SimpleForm>
 </Edit>
 );
@@ -57,6 +65,9 @@ export const ProductCreate = props => (
   <SimpleForm>
     <TextInput source="name" />
     <NumberInput source="quantity" />
+    <ImageInput source="photo" accept="image/*">
+      <ImageField source="src" />
+    </ImageInput>
   </SimpleForm>
 </Create>
 );
@@ -67,6 +78,7 @@ export const ProductShow = props => (
       <TextField source="name" />
       <TextField source="quantity" />
       <TextField source="code" />
+      <ImageField source="photo" />
     </SimpleShowLayout>
   </Show>
 );
