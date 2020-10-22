@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from '@material-ui/core';
 
 export default () => (
   <Card>
-    <CardHeader title="Welcome to your admin website"/>
-    <CardContent>lorem ipsum sit dolor amet..</CardContent>
+    <CardHeader title="This is Shop Manager Dashboard"/>
+    <CardContent>Welcome!</CardContent>
   </Card>
 );

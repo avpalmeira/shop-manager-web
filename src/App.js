@@ -9,7 +9,7 @@ import {
   ProductEdit,
   ProductCreate,
   ProductShow,
-} from './products';
+} from './components/products';
 import Dashboard from './Dashboard';
 import authProvider from './services/authProvider';
 import customDataProvider from './services/dataProvider';
