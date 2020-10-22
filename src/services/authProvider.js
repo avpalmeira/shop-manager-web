@@ -1,8 +1,7 @@
-const authUrl = 'http://localhost:3000/auth';
-
-const authProvider = {
+const authProvider = (url) => {
+  return {
     login: ({ username, password }) => {
-      const request = new Request(`${authUrl}/sign_in`, {
+      const request = new Request(`${url}/sign_in`, {
         method: 'POST',
         body: JSON.stringify({ email: username, password: password }),
         headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -44,6 +43,7 @@ const authProvider = {
     },
     // called when the user navigates to a new location, to check for permissions / roles
     getPermissions: () => Promise.resolve(),
+  }
 };
 
 export default authProvider;

@@ -11,12 +11,14 @@ import {
   ProductShow,
 } from './components/products';
 import Dashboard from './Dashboard';
-import authProvider from './services/authProvider';
-import customDataProvider from './services/dataProvider';
+import authProviderBuilder from './services/authProvider';
+import dataProviderBuilder from './services/dataProvider';
 
-const url = process.env.REACT_APP_API_URL;
+const apiUrl = process.env.REACT_APP_API_URL;
+const authUrl = `${apiUrl}/auth`;
 
-const dataProvider = customDataProvider(url);
+const dataProvider = dataProviderBuilder(apiUrl);
+const authProvider = authProviderBuilder(authUrl);
 
 const App = () => (
   <Admin 
