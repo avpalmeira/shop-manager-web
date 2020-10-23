@@ -1,21 +1,22 @@
 import React from 'react';
 import {
   Create,
+  Datagrid,
   DeleteButton,
   Edit,
   EditButton, 
+  Filter,
   ImageField,
   ImageInput,
+  List,
   NumberInput,
   Show,
   ShowButton,
   SimpleForm,
-  SimpleShowLayout,
-  TextInput,
-  List,
-  Datagrid,
-  TextField,
   SimpleList,
+  SimpleShowLayout,
+  TextField,
+  TextInput,
 } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 
@@ -24,10 +25,16 @@ const ProductTitle = ({record}) => (
   <span>Product: {record ? `${record.name}` : ''}</span>
 );
 
+const ProductFilter = (props) => (
+  <Filter {...props}>
+    <TextInput label="Search" source="name" alwaysOn />
+  </Filter>
+);
+
 export const ProductList = props => {
 	const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down('sm'));
 	return (
-		<List {...props}>
+    <List filters={<ProductFilter />} {...props}>
 			{isSmallScreen ? (
 				<SimpleList
 					primaryText={record => record.name}
